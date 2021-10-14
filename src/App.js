@@ -6,17 +6,17 @@ class App extends React.Component{
     super()
     this.state={
       time:new Date(),
-      logginStatus:false
+      // logginStatus:false
     }
   }
-  start () {
-    this.setState({logginStatus:false})
+  // start () {
+  //   this.setState({logginStatus:false})
     
-  };
-  stop () {
-    this.setState({logginStatus:true})
+  // };
+  // stop () {
+  //   this.setState({logginStatus:true})
     
-  };
+  // };
   
     currentTime(){
       setInterval(()=>{
@@ -27,9 +27,9 @@ class App extends React.Component{
   render(){
     return(
       <h1>
-         <button onClick={this.state.logginStatus ? this.start() : this.stop()}>
+         {/* <button onClick={this.state.logginStatus ? this.start() : this.stop()}>
             {this.state.logginStatus === true ? "start" : "stop"}
-          </button>
+          </button> */}
 
         {this.state.time.toLocaleTimeString()}
         {this.currentTime()}
