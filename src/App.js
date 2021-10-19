@@ -6,34 +6,44 @@ class App extends React.Component{
     super()
     this.state={
       time:new Date(),
-      // logginStatus:false
+      logginStatus:false
     }
+    this.intervalId = null;
   }
-  // start () {
-  //   this.setState({logginStatus:false})
+  start= ()=> {
+    this.setState({logginStatus:false})
+    this.   currentTime()
     
-  // };
-  // stop () {
-  //   this.setState({logginStatus:true})
-    
-  // };
+  };
+  stop =() =>{
+    this.setState({logginStatus:true})
+    clearInterval(this.intervalId)  
+  };
+
+  componentDidMount(){
+    this.currentTime()
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.intervalId)
+  }
   
-    currentTime(){
-      setInterval(()=>{
-        this.setState(this.state.time=new Date())
-      }, 1000)
-    }
-  
+  currentTime(){
+    this.intervalId= setInterval(()=>{
+      this.setState({time:new Date()})
+    }, 1000)
+  }
   render(){
+    console.log(this.intervalId,'this.intervalId')
     return(
       <h1>
-         {/* <button onClick={this.state.logginStatus ? this.start() : this.stop()}>
+         <button onClick={()=>this.state.logginStatus ? this.start() : this.stop()}>
             {this.state.logginStatus === true ? "start" : "stop"}
-          </button> */}
+          </button>
 
         {this.state.time.toLocaleTimeString()}
-        {this.currentTime()}
-        {/* <button>start</button> */}
+     
+        
       </h1>
     )
  
